@@ -1,3 +1,20 @@
+/* Copyright [yyyy] [name of copyright owner]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// bytesize provides utilities to parse and output candinal and unit
+// values that represent a data size (i.e. number of bytes).
 package bytesize
 
 import (
@@ -91,6 +108,11 @@ func (b ByteSize) DecimalString() string {
 	return fmt.Sprintf("%dB", uint64(b))
 }
 
+// String convert the byte size value to a string containing both
+// the value and the unit designation. this function will attempt
+// to match the closes full multiple of a unit. values which
+// cannot be represented as a single value and unit are returned as
+// bytes.
 func (b ByteSize) String() string {
 
 	if uint64(b)%uint64(Exbibyte) == 0 {
